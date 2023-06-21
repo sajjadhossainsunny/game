@@ -45,6 +45,7 @@ p1sub_btn.addEventListener("click", function () {
     } else {
         p1_numinput.value = "";
         p1error.style.display = "none";
+        heading.style.textTransform = "uppercase";
         heading.innerHTML = p1input.value;
         p1input.style.display = "none";
         p1sub_btn.style.display = "none";
@@ -58,13 +59,21 @@ p1_numsub_btn.addEventListener("click", function () {
         p1_numerror.style.display = "block";
         p1_numerror.innerHTML = "Please Enter number between 1 to 10";
     } else {
-        p1_numerror.style.display = "none";
-        heading.innerHTML = "Player - 2 Name";
-        p1_numinput.style.display = "none";
-        p1_numsub_btn.style.display = "none";
-        p2input.style.display = "block";
-        p2sub_btn.style.display = "block";
-        p2input.value = "";
+        if (p1_numinput.value - 15) {
+            console.log("ami number")
+            p1_numerror.style.display = "none";
+            heading.innerHTML = "Player - 2 Name";
+            heading.style.textTransform = "capitalize";
+            p1_numinput.style.display = "none";
+            p1_numsub_btn.style.display = "none";
+            p2input.style.display = "block";
+            p2sub_btn.style.display = "block";
+            p2input.value = "";
+        } else {
+            console.log("ami number na");
+            p1_numerror.style.display = "block";
+            p1_numerror.innerHTML = "Please Enter Number";
+        }
     }
 })
 
@@ -77,6 +86,7 @@ p2sub_btn.addEventListener("click", function () {
         p2error.style.display = "none";
         p2error.style.display = "none";
         heading.innerHTML = p2input.value;
+        heading.style.textTransform = "uppercase";
         p2input.style.display = "none";
         p2sub_btn.style.display = "none";
         p2_numinput.style.display = "block";
@@ -91,7 +101,8 @@ p2_numsub_btn.addEventListener("click", function () {
         p2_numerror.innerHTML = "Please Enter number between 1 to 10";
     } else {
         if (p1_numinput.value == p2_numinput.value) {
-            heading.innerHTML = p2input.value + " Wins";
+            heading.innerHTML = `${p2input.value} wins`;
+            heading.style.textTransform = "capitalize";
             p2_numP.style.display = "none"
             p2_numerror.style.display = "none";
             p2_numinput.style.display = "none";
@@ -101,8 +112,10 @@ p2_numsub_btn.addEventListener("click", function () {
             count--
             p2_numchances.innerHTML = count;
             p2_numinput.value = "";
+            p2_numerror.style.display = "block";
+            p2_numerror.innerHTML = `Try again`;
             if (count == 0) {
-                heading.innerHTML = p1input.value + " Wins";
+                heading.innerHTML = `${p1input.value} Wins`;
                 p2_numP.style.display = "none"
                 p2_numerror.style.display = "none";
                 p2_numinput.style.display = "none";
